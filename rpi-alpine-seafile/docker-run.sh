@@ -114,7 +114,8 @@ if [ ! -f $VERSION_FILE ]; then
 			read SERVER_DOMAIN
 		else
 			[ -z "$SERVER_NAME"   ] && SERVER_NAME="Seafile"
-			[ -z "$SERVER_DOMAIN" ] && SERVER_DOMAIN="seafile.domain.com"
+			# [ ip or domain ]: The user name should be more than 2 bytes and less than 16 bytes
+			[ -z "$SERVER_DOMAIN" ] && SERVER_DOMAIN="seafile.com" 
 		fi
 
 		ccnet-init -F ${HOME}/conf -c ${HOME}/ccnet --name "$SERVER_NAME" --port 10001 --host "$SERVER_DOMAIN" || exit 3
